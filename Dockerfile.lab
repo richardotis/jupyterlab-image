@@ -1,6 +1,7 @@
 FROM jupyter/minimal-notebook:latest
 ENV MKL_NUM_THREADS=1 \
     OMP_NUM_THREADS=1
+RUN apt-get install -y gnupg && rm -rf /var/lib/apt/lists/*
 RUN /opt/conda/bin/conda install -c conda-forge cxx-compiler
 RUN python -m pip install --no-cache-dir git+https://github.com/yiwang62/dfttk@20221114 nbgitpuller
 COPY jupyter_notebook_config.py /etc/jupyter/jupyter_notebook_config.py
