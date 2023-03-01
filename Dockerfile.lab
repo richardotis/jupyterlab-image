@@ -2,6 +2,6 @@ FROM jupyter/minimal-notebook:latest
 ENV MKL_NUM_THREADS=1 \
     OMP_NUM_THREADS=1
 RUN /opt/conda/bin/conda install -c conda-forge cxx-compiler
-RUN python -m pip install --no-cache-dir pysipfenn==0.10.3 nbgitpuller
+RUN python -m pip install --no-cache-dir pysipfenn==0.10.3 nbgitpuller ipywidgets
 RUN python -c "from pysipfenn import Calculator; Calculator().downloadModels()"
 COPY jupyter_notebook_config.py /etc/jupyter/jupyter_notebook_config.py
